@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Nombres premiers</title>
+    <div class="tout">
+    <h1>Nombres premiers</h1>
+    <h2><strong>I. </strong>Qu'est ce que c'est, un nombre premier ?</h2>
+    <h3><strong>1. </strong>Définition</h3>
+    <p>
+      Un nombre premier est un nombre (non décimal) qui n'est divisible que par lui-même ou par 1. <br>
+      Bien sûr, on ne peut pas le diviser par un nombre décimal.
+      <div class="Exemples">
+        Exemple:<br>
+        11/2=6.5; 11/3=3.666666... 11 est un nombre premier.
+      </div>
+
+    </p>
+    <h3><strong>2. </strong>Un peu d'histoire</h3>
+    <p>
+      Même si les premières traces de la découverte des nombres premiers remontent à plus de 20 000 ans (Peut-être même avant l'invention de l'alphabet !),<br> les premiers écrits certifiés sur les nombres premiers datent d'environ 3 siècles avant Jésus-Christ. <br>Euclide (-325/-265 ) a essayé de répertorier les nombres premiers.<br>
+    </p>
+    <h3><strong>3. </strong>Quelques nombres premiers</h3>
+    <p>
+      <div class="Exemples">
+        2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89 et 97.
+      </div>
+    </p>
+    <h2><strong>II. </strong>Comment repérer un nombre premier ?</h2>
+    <h3><strong>1. </strong>Regarder s'il est pair</h3>
+    <p>
+    Si un nombre est pair, ce n'est pas un nombre premier car il sera divisible par 2.
+  </p>
+    <div class="Exemples">
+      12 est un nombre pair: 12/2=6; 12 n'est pas un nombre premier.
+    </div>
+    <h3><strong>2.</strong>Regarder si la somme des chiffres du nombre est égale à un multiple de 3</h3>
+    <p>
+      Pour tester si un nombre est un multiple de 3, on calcule la somme des chiffres du nombre, si c'est égale à un multiple de 3, alors ce n'est pas un nombre premier.
+    </p>
+    <div class="Exemples">
+      333: 3+3+3=9, 333 n'est pas un nombre premier.
+    </div>
+    <h3><strong>3. </strong>Regarder si le dernier chiffre du nombre est égale à 0 ou 5</h3>
+    <p>
+      Si le dernier chiffre du nombre est égale à 0 ou 5, c'est un multiple de 5
+    </p>
+    <div class="Exemples">
+      1 235 se termine par un 5: 1235/5=247.
+    </div>
+    <script type='text/javascript'>
+    function testPremier() {
+    var nb = prompt("Quel nombre voulez-vous tester ?");
+    var estPremier = true;
+
+    if (nb == 1 || nb%2 == 0 || nb%3 == 0 || nb%5 == 0 || nb%7 == 0 || nb%11 == 0) {
+        estPremier = false;
+    }
+
+    if (nb == 2 || nb == 3 || nb == 5 || nb == 7 || nb == 11) {
+        estPremier = true;
+    }
+
+    if (estPremier && nb != 2 && nb != 3 && nb != 5 && nb != 7 && nb != 11) {
+        var testStop = Math.round(Math.sqrt(nb));
+        var suiteCandidatsPremiers = [2,4,2,4,6,2,6,4,2,4,6,6,2,6,4,2,6,4,6,8,4,2,4,2,4,8,6,4,6,2,4,6,2,6,6,4,2,4,6,2,6,4,2,4,2,10,2,10];
+        var i=11;
+        var j=0;
+        while (i<=testStop) {
+            i += suiteCandidatsPremiers[j];
+            if (nb%i == 0) {
+                estPremier = false;
+                break;
+            }
+            if (j == 47) {
+                j = 0;
+            } else {
+                j++;
+            }
+        }
+
+    }
+    if (estPremier==false) {
+      alert(nb + ' n\'est pas un nombre premier !')
+    }
+    else {
+      alert(nb + ' est un nombre premier !')
+    }
+    }
+    </script>
+    <style media="screen">
+    .Exemples {
+      color: green;
+      font-family: sans-serif;
+      font-size: 25px;
+    }
+    h3 {
+      font-family: cursive;
+      font-size: 25px;
+    }
+    h2 {
+      font-family: fantasy;
+      font-size: 30px;
+    }
+    h1 {
+      font-family: fantasy;
+      text-align: center;
+      font-size: 40px;
+    }
+    p {
+      font-family: sans-serif;
+      font-size: 20px;
+    }
+    strong {
+      font-weight: bolder;
+    }
+    .tout {
+      padding-left: 90px;
+      padding-top: 25px;
+      padding-right: 90px;
+      background-color: rgba(250, 250, 250, 0.95);
+      border-radius: 5px;
+    }
+    body {
+      background-image: url(http://cdn.playbuzz.com/cdn/c7d85e53-6517-42bb-8da8-d85467571583/4934630c-fe8b-40fb-a84c-b64bfa85c268.jpg);
+      margin-left: 50px;
+      margin-right: 50px;
+      margin-top: 50px;
+      margin-bottom: 50px;
+    }
+    .button {
+        background-color: green;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        padding: 16px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        -webkit-transition-duration: 0.4s;
+        transition-duration: 0.4s;
+        cursor: pointer;
+    }
+    .button:hover {
+      background-color: green;
+    color: white;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.40),0 17px 50px 0 rgba(250,0,0,0.19);
+  }
+    </style>
+    <button class="button" type="button" name="button" onclick="testPremier();">Testez si un nombre est premier >></button>
+  </div>
+  </head>
+  <body>
+
+  </body>
+</html>
